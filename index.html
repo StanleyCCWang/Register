@@ -1,0 +1,29 @@
+<div class="sub-container-2">
+  <div class="row" ng-controller="StudentRegisterCtrl">
+    <div class="col-md-8 col-md-offset-2">
+      <form name="registerform" class="form col-md-12">
+        <div class="form-group register-input inner-addon right-addon">
+          <i class="account-error glyphicon glyphicon-remove" ng-if="status.isAccountExisted"></i>
+          <input name="account" type="text" class="form-control" ng-model="model.RegisterList.account" placeholder="Account" required>
+        </div>
+        <div class="form-group register-input">
+          <a class="account-existed" ng-if="status.isAccountExisted">Existed</a>
+        </div>
+        <div class="form-group register-input">
+          <input name="password" type="password" class="form-control" ng-model="model.RegisterList.password" placeholder="Password" required>
+        </div>
+        <div class="form-group register-input inner-addon right-addon">
+          <i class="confirm-ok glyphicon glyphicon-ok" ng-if="registerform.password.$dirty && registerform.confirmPassword.$dirty && registerform.confirmPassword.$valid"></i>
+          <i class="confirm-error glyphicon glyphicon-remove" ng-if="registerform.password.$dirty && registerform.confirmPassword.$dirty && registerform.confirmPassword.$invalid"></i>
+          <input name="confirmPassword" type="password" class="form-control" ng-model="model.RegisterList.confirmPassword" placeholder="Confirmed Password" required confirm-pws="model.RegisterList.password">
+        </div>
+        <div class="form-group register-input">
+          <a class="password-match-error" ng-if="registerform.password.$dirty && registerform.confirmPassword.$dirty && registerform.confirmPassword.$invalid">Not Matched</a>
+        </div>
+        <div class="text-center">
+          <button type="button" class="btn btn-info" ng-disabled="registerform.$pristine || registerform.$invalid" ng-click="signup()">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
